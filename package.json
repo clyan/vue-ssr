@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "start": "npm run build&& nodemon ./server/index.js",
+    "build:client": "vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build --mode server",
+    "build": "npm run build:server && npm run build:client"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "cross-env": "^7.0.3",
+    "lodash.merge": "^4.6.2",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2",
+    "vuex-router-sync": "^5.0.0",
+    "webpack-node-externals": "^2.5.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -18,6 +25,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "express": "^4.17.1",
+    "vue-server-renderer": "^2.6.12",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
